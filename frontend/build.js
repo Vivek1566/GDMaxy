@@ -1,2 +1,4 @@
 #!/usr/bin/env node
-require('@craco/craco/dist/bin/craco');
+const path = require('path');
+const cracoPath = path.resolve(__dirname, 'node_modules', '@craco', 'craco', 'dist', 'bin', 'craco.js');
+require(cracoPath);
