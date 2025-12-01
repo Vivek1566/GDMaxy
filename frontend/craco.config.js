@@ -35,6 +35,12 @@ const webpackConfig = {
       '@': path.resolve(__dirname, 'src'),
     },
     configure: (webpackConfig) => {
+      const srcPath = path.resolve(__dirname, 'src');
+      
+      console.log('=== CRACO Webpack Configuration ===');
+      console.log('__dirname:', __dirname);
+      console.log('srcPath:', srcPath);
+      
       // Ensure module resolution includes the src directory
       if (!webpackConfig.resolve) {
         webpackConfig.resolve = {};
@@ -49,10 +55,13 @@ const webpackConfig = {
       }
       
       // Add src directory to modules
-      webpackConfig.resolve.modules.push(path.resolve(__dirname, 'src'));
+      webpackConfig.resolve.modules.push(srcPath);
       
-      // Add @ alias
-      webpackConfig.resolve.alias['@'] = path.resolve(__dirname, 'src');
+      // Add @ alias - force it
+      webpackConfig.resolve.alias['@'] = srcPath;
+      
+      console.log('Resolve alias:', webpackConfig.resolve.alias);
+      console.log('===================================');
 
       // Disable hot reload completely if environment variable is set
       if (config.disableHotReload) {
