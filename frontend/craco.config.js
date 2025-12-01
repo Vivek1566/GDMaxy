@@ -35,6 +35,18 @@ const webpackConfig = {
       '@': path.resolve(__dirname, 'src'),
     },
     configure: (webpackConfig) => {
+      // Ensure module resolution includes the src directory
+      webpackConfig.resolve = {
+        ...webpackConfig.resolve,
+        modules: [
+          ...(webpackConfig.resolve?.modules || []),
+          path.resolve(__dirname, 'src')
+        ],
+        alias: {
+          ...webpackConfig.resolve?.alias,
+          '@': path.resolve(__dirname, 'src'),
+        }
+      };
 
       // Disable hot reload completely if environment variable is set
       if (config.disableHotReload) {
