@@ -1,15 +1,15 @@
 import { useState, useEffect, useRef } from "react";
-import "@/App.css";
+import "./App.css";
 import axios from "axios";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Toaster } from "@/components/ui/sonner";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "./components/ui/tabs";
+import { Toaster } from "./components/ui/sonner";
 import { toast } from "sonner";
-import GridView from "@/components/GridView";
-import GraphView from "@/components/GraphView";
-import ControlPanel from "@/components/ControlPanel";
-import MetricsPanel from "@/components/MetricsPanel";
-import ComparisonView from "@/components/ComparisonView";
-import ExportPanel from "@/components/ExportPanel";
+import GridView from "./components/GridView";
+import GraphView from "./components/GraphView";
+import ControlPanel from "./components/ControlPanel";
+import MetricsPanel from "./components/MetricsPanel";
+import ComparisonView from "./components/ComparisonView";
+import ExportPanel from "./components/ExportPanel";
 import { Activity } from "lucide-react";
 
 const BACKEND_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000';
