@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "buildCommand": "CI=false yarn build",
+  "buildCommand": "CI=false NODE_OPTIONS='--max-old-space-size=4096' yarn build",
   "outputDirectory": "build",
-  "installCommand": "yarn install",
+  "installCommand": "yarn install --frozen-lockfile",
   "framework": null,
   "rewrites": [
     {
@@ -21,7 +21,10 @@
       ]
     }
   ],
-  "env": {
-    "NODE_ENV": "production"
+  "build": {
+    "env": {
+      "NODE_ENV": "production",
+      "DISABLE_ESLINT_PLUGIN": "true"
+    }
   }
 }
