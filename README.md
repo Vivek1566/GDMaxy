@@ -1,6 +1,11 @@
-# GCmaxy - Garbage Collection Simulator
+# GCMaxy - Garbage Collection Simulator
 
 A comprehensive, interactive web-based simulation system for visualizing and comparing garbage collection algorithms in operating systems.
+
+## 🌐 Live Demo
+
+- **Frontend**: [https://gd-maxy-8dwf.vercel.app](https://gd-maxy-8dwf.vercel.app)
+- **Backend API**: [https://gdmaxy-production.up.railway.app](https://gdmaxy-production.up.railway.app)
 
 ## 🎯 Project Overview
 
@@ -47,46 +52,53 @@ This application provides a complete working simulation of memory management and
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Python 3.8+
+- Python 3.11+
 - Node.js 16+
-- MongoDB
+- Yarn package manager
 
-### Installation
+### Local Development
 
-1. **Backend Setup**
+1. **Clone the repository**
+```bash
+git clone https://github.com/Vivek1566/GDMaxy.git
+cd GDMaxy
+```
+
+2. **Backend Setup**
 ```bash
 cd backend
 pip install -r requirements.txt
 ```
 
-2. **Frontend Setup**
+3. **Frontend Setup**
 ```bash
 cd frontend
 yarn install
 ```
 
-### Running the Application
-
-**Development Mode:**
-
-1. Start Backend:
+4. **Start Backend**
 ```bash
 cd backend
-uvicorn server:app --host 0.0.0.0 --port 8001 --reload
+uvicorn server:app --host 0.0.0.0 --port 8000 --reload
 ```
 
-2. Start Frontend:
+5. **Start Frontend** (in a new terminal)
 ```bash
 cd frontend
 yarn start
 ```
 
-3. Access the application:
+6. **Access the application**
 - Frontend: http://localhost:3000
-- Backend API: http://localhost:8001/api
+- Backend API: http://localhost:8000
 
-**Production Mode:**
-Services are managed by supervisor and auto-restart on changes.
+### Deployment
+
+The application is deployed using:
+- **Frontend**: Vercel (automatically deploys from main branch)
+- **Backend**: Railway (automatically deploys from main branch)
+
+See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment instructions.
 
 ## 📊 Features
 
@@ -344,23 +356,23 @@ Services are managed by supervisor and auto-restart on changes.
 
 ## 🐛 Troubleshooting
 
-### Backend Issues
+### CORS Errors
+If you see CORS errors, ensure:
+- Backend `ALLOWED_ORIGINS` environment variable includes your frontend URL
+- Railway deployment has restarted after environment variable changes
+
+### Backend Not Responding
+Check Railway deployment logs for errors. Common issues:
+- Missing environment variables
+- Dependencies not installed correctly
+- Port binding issues
+
+### Frontend Build Failures
+Ensure all dependencies are installed:
 ```bash
-# Check backend logs
-tail -f /var/log/supervisor/backend.err.log
-
-# Restart backend
-sudo supervisorctl restart backend
-```
-
-### Frontend Issues
-```bash
-# Check frontend logs
-tail -f /var/log/supervisor/frontend.err.log
-
-# Clear cache and restart
-rm -rf node_modules/.cache
-sudo supervisorctl restart frontend
+cd frontend
+yarn install
+yarn build
 ```
 
 ## 📚 References
@@ -370,10 +382,30 @@ sudo supervisorctl restart frontend
 - Java Garbage Collection documentation
 - V8 Engine GC implementation
 
+## 🛠️ Tech Stack
+
+**Frontend:**
+- React 19
+- Tailwind CSS
+- shadcn/ui components
+- D3.js for visualizations
+- Recharts for performance graphs
+- Axios for API calls
+
+**Backend:**
+- Python 3.11
+- FastAPI
+- Uvicorn server
+- Pydantic for data validation
+
+**Deployment:**
+- Vercel (Frontend)
+- Railway (Backend)
+
 ## 👥 Credits
 
-Developed for Operating Systems course project (CA-2)
+Garbage Collection Simulator for Operating Systems course project
 
 ## 📄 License
 
-Educational use only
+MIT License - Educational use
